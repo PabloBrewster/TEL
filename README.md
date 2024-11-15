@@ -15,3 +15,4 @@ Repository Description
  - PowerShell Deploys Data Factory Components
  - Simulates a synthetic OLTP workload in the SQL DB
  - Triggers Data Factory pipeline to synchronize upserts to the NoSQL sink.
+ - Destroys/deletes all Azure resources created by the solution.
