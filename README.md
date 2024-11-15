@@ -15,4 +15,4 @@ Technical Summary
  - PowerShell Deploys Data Factory Components
  - Simulates a synthetic OLTP workload in the SQL DB
  - Triggers Data Factory pipeline to synchronize upserts to the NoSQL sink.
- - Terraform Destroys all the Azure resources created by the solution.
+ - Terraform Destroys all the Azure resources created by the solution, deletes the Azure SQL DB, Data Factory, CosmosDB NoSQL Account and Resource Group.
