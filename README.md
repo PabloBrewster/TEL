@@ -1,4 +1,4 @@
-# DataFactory-ChangeDataCapture
+# Transform - Extract - Load
 Deploys and executes a pipeline an Azure using Terraform and PowerShell. 
 Reads synthetic data from a newly commissioned SQL Azure DB source and synchronizes changes to a CosmosDB NoSQL sink using Data Factory. 
 
