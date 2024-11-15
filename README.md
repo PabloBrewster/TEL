@@ -1,5 +1,5 @@
 # Transform - Extract - Load
-This was a basic exercise in DevOps and Data Engineering, to deploy and execute a new application in Azure using Terraform and PowerShell. It generates, reads and transforms synthetic data from a newly built SQL Azure DB source and synchronizes the changes to a CosmosDB NoSQL sink using Data Factory
+This was a basic exercise in DevOps and Data Engineering, to deploy and execute a new application in Azure using Terraform and PowerShell. It generates, reads and transforms synthetic data in a newly commissioned SQL Azure DB source and synchronizes the changes to a CosmosDB NoSQL sink using Data Factory.
 
 Requirements
  - Source Database: Deploys a new Azure SQL DB instance and a synthetic OLTP workload database application https://github.com/PabloBrewster/CellularAutomation.
