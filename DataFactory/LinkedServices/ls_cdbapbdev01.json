@@ -1,0 +1,13 @@
+{
+    {
+        "name": "ls_cdbapdev01",
+        "type": "Microsoft.DataFactory/factories/linkedservices",
+        "properties": {
+            "annotations": [],
+            "type": "CosmosDb",
+            "typeProperties": {
+                "connectionString": "AccountEndpoint=https://cdbapbdev01.documents.azure.com:443/;Database=cdbsqldb-pbdev01;",
+                "encryptedCredential": "###########################################"
+            }
+        }
+    }

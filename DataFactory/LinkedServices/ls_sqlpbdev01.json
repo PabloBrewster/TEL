@@ -1,0 +1,14 @@
+{
+    "name": "ls_sqlpbdev01",
+    "properties": {
+        "annotations": [],
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "server": "sqlpbdev01.database.windows.net",
+            "database": "SQL_data",
+            "encrypt": "mandatory",
+            "trustServerCertificate": false,
+            "authenticationType": "SystemAssignedManagedIdentity"
+        }
+    }
+}

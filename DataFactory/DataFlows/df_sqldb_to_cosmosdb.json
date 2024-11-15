@@ -1,0 +1,51 @@
+{
+    "name": "df_sqldb_to_cosmosdb",
+    "properties": {
+        "type": "MappingDataFlow",
+        "typeProperties": {
+            "sources": [
+                {
+                    "dataset": {
+                        "referenceName": "ds_sqldb",
+                        "type": "DatasetReference"
+                    },
+                    "name": "sourcesql"
+                }
+            ],
+            "sinks": [
+                {
+                    "dataset": {
+                        "referenceName": "ds_cosmosdb",
+                        "type": "DatasetReference"
+                    },
+                    "name": "sinkcosmos"
+                }
+            ],
+            "transformations": [],
+            "scriptLines": [
+                "source(output(",
+                "          ID as integer,",
+                "          Pattern_ID as integer,",
+                "          Session_ID as integer,",
+                "          x as integer,",
+                "          y as integer,",
+                "          updated_at as binary,",
+                "          grid_reference as binary",
+                "     ),",
+                "     allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     isolationLevel: 'READ_UNCOMMITTED',",
+                "     format: 'table') ~> sourcesql",
+                "sourcesql sink(allowSchemaDrift: true,",
+                "     validateSchema: false,",
+                "     deletable:false,",
+                "     insertable:true,",
+                "     updateable:false,",
+                "     upsertable:false,",
+                "     format: 'document',",
+                "     skipDuplicateMapInputs: true,",
+                "     skipDuplicateMapOutputs: true) ~> sinkcosmos"
+            ]
+        }
+    }
+}

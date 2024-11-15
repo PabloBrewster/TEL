@@ -1,0 +1,51 @@
+{
+    "name": "ds_sqldb",
+    "properties": {
+        "linkedServiceName": {
+            "referenceName": "ls_sqlpbdev01",
+            "type": "LinkedServiceReference"
+        },
+        "annotations": [],
+        "type": "AzureSqlTable",
+        "schema": [
+            {
+                "name": "ID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Pattern_ID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "Session_ID",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "x",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "y",
+                "type": "int",
+                "precision": 10
+            },
+            {
+                "name": "updated_at",
+                "type": "timestamp"
+            },
+            {
+                "name": "grid_reference",
+                "type": "geometry"
+            }
+        ],
+        "typeProperties": {
+            "schema": "dbo",
+            "table": "vw_transform_merkle"
+        }
+    },
+    "type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,130 @@
+{
+    "name": "pl_etl_employees",
+    "properties": {
+        "activities": [
+            {
+                "name": "df_sql_to_cosmos",
+                "type": "ExecuteDataFlow",
+                "dependsOn": [
+                    {
+                        "activity": "Log Started",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "dataflow": {
+                        "referenceName": "df_sqldb_to_cosmosdb",
+                        "type": "DataFlowReference"
+                    },
+                    "compute": {
+                        "coreCount": 8,
+                        "computeType": "General"
+                    },
+                    "traceLevel": "Fine"
+                }
+            },
+            {
+                "name": "Log Started",
+                "type": "Lookup",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "DECLARE @row_count INT;\r\n\r\nSELECT @row_count = COUNT(*) \r\nFROM dbo.Merkle \r\nWHERE updated_at > (SELECT MAX(updated_at) FROM dbo.load_control);\r\n\r\nINSERT INTO dbo.load_control (load_start, row_count, load_status)\r\nSELECT GETDATE(), @row_count, 'Running'\r\n\r\nSELECT 'Started'",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "dataset": {
+                        "referenceName": "ds_sqldb",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "Log Completed",
+                "type": "Lookup",
+                "dependsOn": [
+                    {
+                        "activity": "df_sql_to_cosmos",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "DECLARE @id INT;\nSELECT @id = MAX(id) FROM dbo.load_control;\n\nUPDATE dbo.load_control\nSET load_end = GETDATE(), load_status = 'Completed'\nWHERE id = @id;\n\nSELECT 'Completed'",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "dataset": {
+                        "referenceName": "ds_sqldb",
+                        "type": "DatasetReference"
+                    }
+                }
+            },
+            {
+                "name": "Log Failed",
+                "type": "Lookup",
+                "dependsOn": [
+                    {
+                        "activity": "df_sql_to_cosmos",
+                        "dependencyConditions": [
+                            "Failed"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "source": {
+                        "type": "AzureSqlSource",
+                        "sqlReaderQuery": "DECLARE @id INT;\nSELECT @id = MAX(id) FROM dbo.load_control;\n\nUPDATE dbo.load_control\nSET load_end = GETDATE(), load_status = 'Failed'\nWHERE id = @id;\n\nSELECT 'Failed'",
+                        "queryTimeout": "02:00:00",
+                        "partitionOption": "None"
+                    },
+                    "dataset": {
+                        "referenceName": "ds_sqldb",
+                        "type": "DatasetReference"
+                    }
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2024-10-25T11:41:26Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
