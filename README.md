@@ -1,21 +1,16 @@
 # Transform - Extract - Load
-Deploys and executes a pipeline solution in Azure using Terraform and PowerShell that reads synthetic data from a newly built SQL Azure DB source and synchronizes changes to a CosmosDB NoSQL sink using Data Factory. 
-
+This was an experiment to deploy and execute a new application in Azure using Terraform and PowerShell. It reads and transforms synthetic data from a newly built SQL Azure DB source and synchronizes the changes to a CosmosDB NoSQL sink using Data Factory.
 
 Requirements
-1. Source Database: Deploys a new Azure SQL DB instance and a synthetic OLTP workload database application https://github.com/PabloBrewster/CellularAutomation.
-2. Sink Database: Deploys a new CosmosDB NoSQL account
-3. Pipeline Components: Deploys a Data Factory resource to synchronize source upserts to target sink.
+ - Source Database: Deploys a new Azure SQL DB instance and a synthetic OLTP workload database application https://github.com/PabloBrewster/CellularAutomation.
+ - Sink Database: Deploys a new CosmosDB NoSQL account
+ - Pipeline Components: Deploys a Data Factory resource to synchronize source insert/update deltas to the target sink.
 
-
-Repository Description
-Solution.ps1: Is the driver script for the deployment of Azure resourses
- - Sets variables used by Terraform and PowerShell 
+Repository Description Solution.ps1: Is the driver script for the deployment and execution of the new Azure recourses
+ - Sets variables used by Terraform and PowerShell
  - Deploys Azure resources using Terraform
- - Powershell Creates a SQL user for the Data Factory Managed Identity, assigns minimum privileges
+ - PowerShell Creates a SQL user for the Data Factory Managed Identity, assigns minimum privileges
  - PowerShell Grants Data Factory Managed Identity permissions to target CosmosDB
  - PowerShell Deploys Data Factory Components
  - Simulates a synthetic OLTP workload in the SQL DB
  - Triggers Data Factory pipeline to synchronize upserts to the NoSQL sink.
-
-
