@@ -6,7 +6,8 @@ Requirements
  - Sink Database: Deploys a new CosmosDB NoSQL account
  - Pipeline Components: Deploys a Data Factory resource to synchronize source insert/update deltas to the target sink.
 
-Repository Description Solution.ps1: Is the driver script for the deployment and execution of the new Azure recourses
+Repository Description 
+ - Solution.ps1: Is the driver script for the deployment and execution of the new Azure recourses
  - Sets variables used by Terraform and PowerShell
  - Deploys Azure resources using Terraform
  - PowerShell Creates a SQL user for the Data Factory Managed Identity, assigns minimum privileges
