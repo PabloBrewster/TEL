@@ -99,11 +99,12 @@ Set-AzDataFactoryV2Trigger -DataFactoryName $dataFactoryName `
     -ResourceGroupName $resourceGroupName -Name "trpbhub00" `
     -DefinitionFile .\DataFactory\Triggers\trpbhub00.json
 
+# Trigger pipeline to sync changes
 Invoke-AzDataFactoryV2Pipeline -DataFactory $dataFactoryName `
     -PipelineName "pl_etl_Merkle" `
     -ResourceGroupName $resourceGroupName
 
-# Remove all Azure resources using Terraform
+# Delete all the Azure resources created and used during this run. 
 Set-location ./terraform
 terraform destroy
 Set-Location ../
