@@ -1,5 +1,5 @@
 # Transform - Extract - Load
-This was an exercise in basic Azure DevOps and Data Engineering, to deploy and execute a new application in Azure using Terraform and PowerShell. It generates, reads and transforms synthetic data in a newly commissioned SQL Azure DB source and synchronizes the changes to a CosmosDB NoSQL sink using Data Factory: For novelty and expediency, a data transform is performed on synthetically created geometry data in a source view.
+This was an exercise in basic DevOps and Data Engineering, to deploy and execute a new application in Azure using Terraform and PowerShell. It generates, reads and transforms synthetic geometric data in a SQL Azure DB source and synchronizes the changes to a CosmosDB NoSQL sink using Data Factory: For novelty and expediency, a data type transform is performed in a source view. Incremental inserts and updates in the source data are synchronized but delete's are not. If synchronizing source deletes were important then Change Data Capture would be an a better but more expensive choice.
 
 Requirements
  - Source Database: Deploys a new Azure SQL DB instance and a synthetic OLTP workload database application https://github.com/PabloBrewster/CellularAutomation.
