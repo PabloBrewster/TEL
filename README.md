@@ -16,3 +16,6 @@ Technical Summary
  - Simulates a synthetic OLTP workload in the SQL DB
  - Triggers Data Factory pipeline to synchronize upserts to the NoSQL sink.
  - Terraform Destroys all the Azure resources created by the solution, deletes the Azure SQL DB, Data Factory, CosmosDB NoSQL Account and Resource Group.
+
+Conclusion
+This was an exercise/project in my own time using my personal Azure subscription and test data generated using an application I wrote. In total, the cost was about £12, mostly associated with Data Factory compute. It would have been nice to have used the ‘Change Data Capture’ preview in Data Factory but Azure SQL DB does not support it in the free or basic tiers.
