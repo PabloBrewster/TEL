@@ -104,7 +104,7 @@ Invoke-AzDataFactoryV2Pipeline -DataFactory $dataFactoryName `
     -PipelineName "pl_etl_Merkle" `
     -ResourceGroupName $resourceGroupName
 
-# Delete all the Azure resources created and used during this run. 
+# Delete all Azure resources created and used in this execution. 
 Set-location ./terraform
 terraform destroy
 Set-Location ../
