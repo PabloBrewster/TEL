@@ -65,7 +65,7 @@ $sql = $response.Content
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName -AccessToken $access_token `
               -Query $sql
 
-# Simulate OLTP workload
+# Simulate OLTP workload in the source SQL DB
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName `
 -AccessToken $access_token -Query "EXECUTE dbo.CA_Benchmark @IO_Benchmark = 1, @StressLevel = 2, @Batches = 1;"
 
@@ -99,7 +99,7 @@ Set-AzDataFactoryV2Trigger -DataFactoryName $dataFactoryName `
     -ResourceGroupName $resourceGroupName -Name "trpbhub00" `
     -DefinitionFile .\DataFactory\Triggers\trpbhub00.json
 
-# Trigger pipeline to sync changes
+# Trigger pipeline to sync changes from SQL source to NoSQL sink
 Invoke-AzDataFactoryV2Pipeline -DataFactory $dataFactoryName `
     -PipelineName "pl_etl_Merkle" `
     -ResourceGroupName $resourceGroupName
