@@ -1,4 +1,4 @@
--- Load control table used for cheap incremental ETL solution  
+-- Load control table and delta Merkle view for insert/update incremental loads, does not sync source deletes.
 IF OBJECT_ID('load_control') IS NOT NULL
 	DROP TABLE dbo.load_control;
 GO
@@ -14,7 +14,6 @@ CREATE TABLE dbo.load_control
 );
 GO
 
--- Load control view used for cheap incremental ETL solution  
 IF EXISTS (SELECT * FROM sys.views WHERE [name] = 'vw_transform_merkle')
 	DROP VIEW dbo.vw_transform_merkle;
 GO
