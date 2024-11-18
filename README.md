@@ -7,14 +7,18 @@ Requirements
  - Pipeline Components: Deploys a Data Factory resource to synchronize source insert/update deltas to the target sink.
 
 Technical Summary 
- - Solution.ps1: Is the driver script for the deployment and execution of the new Azure recourses, it performs the following actions:
+Solution.ps1: Is the driver script for the deployment, execution then destruction of new Azure recourses performing the following actions:
  - Sets variables used by Terraform and PowerShell
  - Deploys Azure resources using Terraform
- - PowerShell Creates a SQL user for the Data Factory Managed Identity, assigns minimum privileges
+ - PowerShell Grants Data Factory Managed Identity permissions for source SQL
  - PowerShell Grants Data Factory Managed Identity permissions to target CosmosDB
  - PowerShell Deploys Data Factory Components
- - Simulates a synthetic OLTP workload in the SQL DB
- - Triggers Data Factory pipeline to synchronize upserts to the NoSQL sink.
+ - Installs a template test database
+ - Installs 'Cheap ETL' SQL componements for delta synchronization  
+ - Simulates a synthetic OLTP workload in the source SQL DB
+ - Triggers Data Factory pipeline to synchronize the NoSQL sink.
+ - Simulates a second synthetic OLTP workload in the source SQL DB
+ - Triggers Data Factory pipeline to synchronize changes to the NoSQL sink.
  - Terraform Destroys all the Azure resources created by the solution, deletes the Azure SQL DB, Data Factory, CosmosDB NoSQL Account and Resource Group.
 
 Conclusion
