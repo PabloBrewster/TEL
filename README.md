@@ -23,4 +23,4 @@ Technical Summary
 
 Conclusion
 
-This was an exercise/project in my own time using my personal Azure subscription and test data generated using an application I wrote. In total, the cost was about £12, mostly associated with Data Factory compute. It would have been nice to have used the ‘Change Data Capture’ preview in Data Factory but Azure SQL DB does not support it in the free or basic tiers.
+This was an exercise/project in my own time using my personal Azure subscription and test data generated using an application I wrote. In total, the cost was about £12, mostly associated with Data Factory compute. It would have been nice to have used the ‘Change Data Capture’ preview in Data Factory but Azure SQL DB does not support it in the free or basic tiers and I'm too tight.
