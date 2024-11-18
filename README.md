@@ -10,9 +10,9 @@ Technical Summary
 
  - Sets variables used by Terraform and PowerShell
  - Deploys Azure resources using Terraform
- - PowerShell Grants Data Factory Managed Identity permissions for source SQL
- - PowerShell Grants Data Factory Managed Identity permissions to target CosmosDB
- - PowerShell Deploys Data Factory Components
+ - Grants Data Factory Managed Identity permissions for source SQL
+ - Grants Data Factory Managed Identity permissions to target CosmosDB
+ - Deploys Data Factory Components
  - Installs a stub test data generator 
  - Installs 'Cheap ETL' SQL components for delta synchronization of stub test data 
  - Simulates a synthetic OLTP workload in the source SQL DB
