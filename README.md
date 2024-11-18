@@ -7,6 +7,7 @@ Requirements
  - Pipeline Components: Deploys a Data Factory resource to synchronize source insert/update deltas to the target sink.
 
 Technical Summary 
+
 Solution.ps1: Is the driver script for the deployment, execution then destruction of new Azure recourses performing the following actions:
  - Sets variables used by Terraform and PowerShell
  - Deploys Azure resources using Terraform
