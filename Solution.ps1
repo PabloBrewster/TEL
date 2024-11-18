@@ -46,6 +46,9 @@ Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $S
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName -AccessToken $access_token -Query "ALTER ROLE [db_datareader] ADD MEMBER [$dataFactoryName];"
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName -AccessToken $access_token -Query "ALTER ROLE [db_datawriter] ADD MEMBER [$dataFactoryName];"
 
+# Add Cheap ETL solution
+Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName `
+-AccessToken $access_token -InputFile '.\SQL\CheapETLForCA.sql'
 
 # Grant Data Factory Managed Identity permissions for Cosmos DB
 # Assumes the Azure AZ PowerShell module is installed
