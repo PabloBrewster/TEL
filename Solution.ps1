@@ -46,10 +46,6 @@ Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $S
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName -AccessToken $access_token -Query "ALTER ROLE [db_datareader] ADD MEMBER [$dataFactoryName];"
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName -AccessToken $access_token -Query "ALTER ROLE [db_datawriter] ADD MEMBER [$dataFactoryName];"
 
-# Add Cheap ETL solution
-Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName `
--AccessToken $access_token -InputFile '.\SQL\CheapETLForCA.sql'
-
 # Grant Data Factory Managed Identity permissions for Cosmos DB
 # Assumes the Azure AZ PowerShell module is installed
 $principalId = Get-AzADServicePrincipal -DisplayName $dataFactoryName
@@ -67,6 +63,10 @@ $response = Invoke-WebRequest -Uri $url
 $sql = $response.Content
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName -AccessToken $access_token `
               -Query $sql
+
+# Add Cheap ETL solution to CA scratch db template
+Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName `
+-AccessToken $access_token -InputFile '.\SQL\CheapETLForCA.sql'
 
 # Deploy Data Factory Linked Services, Data Sets, Pipeline and Trigger
 Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName 
