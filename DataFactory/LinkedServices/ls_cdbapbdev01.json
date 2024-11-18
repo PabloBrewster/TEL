@@ -6,7 +6,7 @@
             "annotations": [],
             "type": "CosmosDb",
             "typeProperties": {
-                "connectionString": "AccountEndpoint=https://cdbapbdev01.documents.azure.com:443/;Database=cdbsqldb-pbdev01;",
+                "connectionString": "###########################################",
                 "encryptedCredential": "###########################################"
             }
         }
