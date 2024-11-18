@@ -1,4 +1,4 @@
--- Load control table and delta Merkle view for insert/update incremental loads, does not sync source deletes.
+-- Load control table and delta Merkle view for insert/update incremental transforms and Dats Factory loads, does not sync source deletes.
 IF OBJECT_ID('load_control') IS NOT NULL
 	DROP TABLE dbo.load_control;
 GO
