@@ -8,18 +8,17 @@ Requirements
 
 Technical Summary 
 
-Solution.ps1: Is the driver script for the deployment, execution then destruction of new Azure recourses performing the following actions:
  - Sets variables used by Terraform and PowerShell
  - Deploys Azure resources using Terraform
  - PowerShell Grants Data Factory Managed Identity permissions for source SQL
  - PowerShell Grants Data Factory Managed Identity permissions to target CosmosDB
  - PowerShell Deploys Data Factory Components
- - Installs a template test database
- - Installs 'Cheap ETL' SQL componements for delta synchronization  
+ - Installs a stub test data generator 
+ - Installs 'Cheap ETL' SQL components for delta synchronization of stub test data 
  - Simulates a synthetic OLTP workload in the source SQL DB
- - Triggers Data Factory pipeline to synchronize the NoSQL sink.
+ - Triggers a Data Factory pipeline to synchronize the NoSQL sink.
  - Simulates a second synthetic OLTP workload in the source SQL DB
- - Triggers Data Factory pipeline to synchronize changes to the NoSQL sink.
+ - Triggers a second Data Factory pipeline to synchronize changes to the NoSQL sink.
  - Terraform Destroys all the Azure resources created by the solution, deletes the Azure SQL DB, Data Factory, CosmosDB NoSQL Account and Resource Group.
 
 Conclusion
