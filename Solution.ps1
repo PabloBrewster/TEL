@@ -119,4 +119,3 @@ Invoke-AzDataFactoryV2Pipeline -DataFactory $dataFactoryName `
 # Delete all Azure resources created and used in this execution, the SQL DB source, CosmosDB sink, Data Factory & Resource Group. 
 Set-location ./terraform
 terraform destroy
-Set-Location ../
