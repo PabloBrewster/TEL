@@ -100,7 +100,7 @@ Set-AzDataFactoryV2Trigger -DataFactoryName $dataFactoryName `
 
 # Simulate OLTP workload in the source SQL DB
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName `
--AccessToken $access_token -Query "EXECUTE dbo.CA_Benchmark @IO_Benchmark = 1, @StressLevel = 2, @Batches = 1;"
+-AccessToken $access_token -Query "EXECUTE dbo.CA_Benchmark @SetBased_CA = 1, @InitialPatternComplexity = 2, @Batches = 1;"
 
 # Trigger pipeline to sync changes from SQL source to NoSQL sink
 Invoke-AzDataFactoryV2Pipeline -DataFactory $dataFactoryName `
@@ -109,7 +109,7 @@ Invoke-AzDataFactoryV2Pipeline -DataFactory $dataFactoryName `
 
 # Simulate OLTP workload (inserts) in source SQL DB
 Invoke-Sqlcmd -ServerInstance $SQLServerName".database.windows.net" -Database $SQLDatabaseName `
--AccessToken $access_token -Query "EXECUTE dbo.CA_Benchmark @IO_Benchmark = 1, @StressLevel = 2, @Batches = 1;"
+-AccessToken $access_token -Query "EXECUTE dbo.CA_Benchmark @SetBased_CA = 1, @InitialPatternComplexity = 2, @Batches = 1;"
 
 # Trigger pipeline to sync changes from SQL source to NoSQL sink (Inserts/Updates only, using timestamp > last data factory runtime)
 Invoke-AzDataFactoryV2Pipeline -DataFactory $dataFactoryName `
