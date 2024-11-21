@@ -23,4 +23,4 @@ Technical Summary
 
 Conclusion
 
-This was an exercise/project in my own time using my personal Azure subscription and test data generated using an application I wrote. In total, the cost was about £12, mostly associated with Data Factory compute. It would have been nice to have used the ‘Change Data Capture’ preview in Data Factory but Azure SQL DB does not support it in the free or basic tiers and I'm too tight.
+This was an interesting project in my own time using my personal Azure subscription, PowerShell and Terraform commands from Google, Co-pilot and stub Cellular Automation test data generated using an application I developed in my own time.  All the techniques, scripts, variables used were made up on the fly and run in my personal Azure subscription for a total cost of about £12. 
