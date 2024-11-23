@@ -1,8 +1,6 @@
 # Data Factory: Transform - Extract - Load
 This was a self learning exercise in basic Azure DevOps and Data Engineering, to deploy, execute then destroy a data pipeline in Azure using Terraform and PowerShell. It generates then reads and transforms generic geometric data in a SQL Azure DB source and synchronizes the changes to a Cosmos DB NoSQL sink using Data Factory: For novelty, a data type transform is performed in a source view hence the click bait TED title joke. Incremental inserts and updates in the source data are synchronized using timestamps but delete's are not. If synchronizing source deletes were important then Change Data Capture would have been an a better but more expensive choice. 
 
-The solution Repo is here: PabloBrewster/TEL
-
 Objectives
 
 Source Database: Deploy a new Azure SQL DB instance with test data
