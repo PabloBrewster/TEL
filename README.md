@@ -10,19 +10,18 @@ Objectives
 Technical Summary 
 
 The Solution.ps1 script Is the driver script for the deployment, execution then destruction of new Azure resources performing the following actions:
-
-Sets variables used by Terraform and PowerShell
-Deploys Azure resources using Terraform
-Grants Data Factory Managed Identity permissions for source SQL
-Grants Data Factory Managed Identity permissions to target Cosmos DB
-Deploys Data Factory Components
-Installs a stub 'Cellular Automation' test data application 
-Installs 'Timestamp ETL' SQL components for delta synchronization of stub test data 
-Simulates a synthetic OLTP workload in the source SQL DB
-Triggers a Data Factory pipeline to synchronize to the NoSQL sink.
-Simulates a second synthetic OLTP workload in the source SQL DB
-Triggers a second Data Factory pipeline to synchronize the delta inserts/updates to the NoSQL sink.
-Terraform Destroys all the Azure resources created by the solution.
+ - Sets variables used by Terraform and PowerShell
+ - Deploys Azure resources using Terraform
+ - Grants Data Factory Managed Identity permissions for source SQL
+ - Grants Data Factory Managed Identity permissions to target Cosmos DB
+ - Deploys Data Factory Components
+ - Installs a stub 'Cellular Automation' test data application 
+ - Installs 'Timestamp ETL' SQL components for delta synchronization of stub test data 
+ - Simulates a synthetic OLTP workload in the source SQL DB
+ - Triggers a Data Factory pipeline to synchronize to the NoSQL sink.
+ - Simulates a second synthetic OLTP workload in the source SQL DB
+ - Triggers a second Data Factory pipeline to synchronize the delta inserts/updates to the NoSQL sink.
+ - Terraform Destroys all the Azure resources created by the solution.
 
 Conclusion
 
