@@ -25,4 +25,4 @@ The Solution.ps1 script Is the driver script for the deployment, execution then 
 
 Conclusion
 
-This was an interesting project in my own time using my personal Azure subscription, PowerShell and Terraform commands from Google, Co-pilot and stub Cellular Automation test data generated using an application I developed in my own time many years ago. All the techniques, scripts, variables used were made up on the fly and run in my personal Azure subscription for a total cost of about £12. 
+An interesting project in my own time using my personal Azure subscription, PowerShell and Terraform commands from Google, Co-pilot and stub Cellular Automation test data generated using an application I developed in my own time many years ago. All the techniques, scripts, variables used were made up on the fly and run in my personal Azure subscription for a total cost of about £12. 
