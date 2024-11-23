@@ -3,9 +3,9 @@ This was a self learning exercise in basic Azure DevOps and Data Engineering, to
 
 Objectives
 
-Source Database: Deploy a new Azure SQL DB instance with test data
-Sink Database: Deploys a new Cosmos DB NoSQL account
-Pipeline: Deploys a Data Factory resource to synchronize source insert/update deltas to the target sink.
+ - Source Database: Deploy a new Azure SQL DB instance with test data
+ - Sink Database: Deploys a new Cosmos DB NoSQL account
+ - Pipeline: Deploys a Data Factory resource to synchronize source insert/update deltas to the target sink.
 
 Technical Summary 
 
